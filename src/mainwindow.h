@@ -17,6 +17,7 @@ public:
     
 private slots:
 
+    void on_mod_pushButton_clicked();
     void on__7_pushButton_clicked();
 
     void on__1_pushButton_clicked();
@@ -59,12 +60,13 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void inputTextDisplay(); //输入文字显示
-    void recordTextDisplay(); //记录字段显示
-    void errorButtonLocker();   //错误锁键
-    void errorButtonUnlocker(); //解锁
+    void inputTextDisplay(); //示
+    void recordTextDisplay(); //录侄示
+    void errorButtonLocker();   //
+    void errorButtonUnlocker(); //
+    void recordplainLineDisplay(); //
 
-    double sumStackNum();   //和栈内数
+    double sumStackNum();   //栈
     double heigOp(double inputDouble);
 };
 

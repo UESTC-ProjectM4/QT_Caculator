@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <stack>
 #include <vector>
+#include <stdlib.h>
+#include <qstring.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -28,7 +30,8 @@ std::vector<int> operatorID;    //操作栈,1乘 2除 3余
 /**
   * @date 2020/7/9 @author marktlen
   * @brief 数字按钮
-  */
+ */
+
 void MainWindow::on__1_pushButton_clicked()
 {
     if(opFlag == true)
@@ -160,6 +163,7 @@ void MainWindow::recordTextDisplay()
 {
     ui->record_lineEdit->setText(recordText);
 }
+
 
 void MainWindow::on_input_lineEdit_editingFinished()
 {
@@ -499,5 +503,48 @@ void MainWindow::on_equal_pushButton_clicked()
     if(errorFlag == true)
     {
         ui->input_lineEdit->setText(QString("error!"));
+    }
+}
+
+
+void MainWindow::on_mod_pushButton_clicked()
+{
+    if(opFlag == false)
+    {
+        opFlag = true;
+        bool successFlag; //转换成功标记
+        double inputDouble =  ui->input_lineEdit->text().toDouble(&successFlag);
+        QString tempStr;
+        QString inputstr1;
+        QString inputstr2;
+        // 能否成功转换为double类型
+        if(successFlag)
+        {
+            //记录段显示
+            inputstr1 = ui->input_lineEdit->text();
+
+            recordText += inputstr + "%";
+            recordTextDisplay();
+            if(operatorID.empty() == true) //有未处理的高阶运算
+            {
+                //数字入栈
+                inputNum.push_back(inputDouble);
+                inputstr =  tempStr.number(sumStackNum(),'f',1);
+                inputTextDisplay();
+            }
+            else
+            {
+                //进行高优先级运算后，在
+                tempStr.number(heigOp(inputDouble),'f',1);
+                inputstr =  tempStr.number( sumStackNum(),'f',1);
+                inputTextDisplay();
+            }
+        }
+        else
+        {
+            ui->input_lineEdit->text() = QString("输入错误！");
+            errorFlag = true;
+            errorButtonLocker();
+        }
     }
 }

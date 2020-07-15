@@ -566,7 +566,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPlainTextEdit" name="record_plainTextEdit">
+   <widget class="QLineEdit" name="record_plainLineEdit">
     <property name="geometry">
      <rect>
       <x>730</x>
@@ -574,12 +574,6 @@
       <width>191</width>
       <height>471</height>
      </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>191</width>
-      <height>471</height>
-     </size>
     </property>
    </widget>
   </widget>
@@ -589,7 +583,7 @@
      <x>0</x>
      <y>0</y>
      <width>930</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
